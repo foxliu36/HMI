@@ -76,6 +76,7 @@
             this.Controls.Add(this.label1);
             this.Name = "WaitingForm";
             this.Text = "WaitingForm";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.WaitingForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

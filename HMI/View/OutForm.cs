@@ -310,12 +310,11 @@ namespace HMI.View
             
             //backgroundWorker1.RunWorkerAsync();
             //progressBar1.Value +=1;
-            WaitingForm wform = new WaitingForm();
-            Thread th = new Thread(wform.Start);
-            th.Start();
+
+            WaitingForm.Start();
             Thread.Sleep(10000);
             //wform.WorkerReport(100, "結束");
-            
+            WaitingForm.EndDisplay();
 
             }
             catch (Exception ex)
