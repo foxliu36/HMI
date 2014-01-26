@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using HMI.Entity;
+using System.Threading;
+using HMI.CommonForm;
 
 namespace HMI.View
 {
@@ -279,6 +281,49 @@ namespace HMI.View
             outform1.ShowDialog();
         }
 
-                
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                Thread.Sleep(500);
+                backgroundWorker1.ReportProgress(i);
+            }
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            label11.Text = string.Format("Processing... {0}% complete", e.ProgressPercentage);
+            //progressBar1.Value = e.ProgressPercentage;
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            progressBar1.Value = 100;
+            Thread.Sleep(1000);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            
+            //backgroundWorker1.RunWorkerAsync();
+            //progressBar1.Value +=1;
+            WaitingForm wform = new WaitingForm();
+            Thread th = new Thread(wform.Start);
+            th.Start();
+            Thread.Sleep(10000);
+            //wform.WorkerReport(100, "結束");
+            
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        
     }
 }

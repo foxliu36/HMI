@@ -15,7 +15,7 @@ namespace HMI
         SqlDataAdapter sda = new SqlDataAdapter();
 
         public Dao() {
-            con.ConnectionString = "Data Source = .;Initial Catalog=XIN;User ID=joe;Password=922311;";
+            con.ConnectionString = "Data Source = .;Initial Catalog=XIN;User ID=fox;Password=922311;";
         }
 
         //查詢

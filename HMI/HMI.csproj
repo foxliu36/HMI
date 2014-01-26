@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonForm\WaitingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommonForm\WaitingForm.Designer.cs">
+      <DependentUpon>WaitingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dao.cs" />
     <Compile Include="Entity\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -100,6 +106,9 @@
     <Compile Include="View\OutForm_1_1.Designer.cs">
       <DependentUpon>OutForm_1_1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CommonForm\WaitingForm.resx">
+      <DependentUpon>WaitingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
