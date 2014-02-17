@@ -33,16 +33,26 @@ namespace HMI.View
                     var qdata = from q in context.Customer
                                 select q;
                 }
-                dt = dao.Query("SELECT * FROM Delivery");
+                dt = dao.Query("SELECT * FROM Sheet101");
 
-                var dvgdata = from q in dt.AsEnumerable()
-                              select new
-                              {
-                                  DeliveryID = q.Field<string>("DeliveryID"),
-                                  DeliveryDate = q.Field<DateTime>("DeliveryDate")
-                              };
+                var data = from q in dt.AsEnumerable()
+                           select new
+                           {
+                               id = q.Field<string>("Smid"),
+                               c = q.Field<int>("Car")
+                           };
 
-                this.dgvDelivery.DataSource = dvgdata.ToList();
+                //var dvgdata = from q in dt.AsEnumerable()
+                //              select new
+                //              {
+                //                  DeliveryID = q.Field<string>("DeliveryID"),
+                //                  DeliveryDate = q.Field<DateTime>("DeliveryDate")
+                //              };
+
+                this.dgvDelivery.DataSource = data.ToList();
+
+                
+
             }
             catch (Exception ex)
             {
@@ -53,7 +63,7 @@ namespace HMI.View
         //載入畫面
         private void OutForm_Load(object sender, EventArgs e)
         {
-            DataRefresh();
+            //DataRefresh();
         }
 
         //跳回主畫面
@@ -311,11 +321,11 @@ namespace HMI.View
             //backgroundWorker1.RunWorkerAsync();
             //progressBar1.Value +=1;
 
-            WaitingForm.Start();
-            Thread.Sleep(10000);
+            //WaitingForm.Start();
+            //Thread.Sleep(10000);
             //wform.WorkerReport(100, "結束");
-            WaitingForm.EndDisplay();
-
+           // WaitingForm.EndDisplay();
+                DataRefresh();
             }
             catch (Exception ex)
             {
